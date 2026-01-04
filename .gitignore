@@ -1,0 +1,84 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code related
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+bin/
+
+# Android related
+android/.gradle/
+android/local.properties
+android/out/
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# iOS/macOS related
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/App.podspec
+**/ios/Flutter/Generated.framework
+**/macos/Flutter/Generated.xcconfig
+**/macos/Flutter/flutter_export_environment.sh
+**/macos/Flutter/App.framework
+**/macos/Flutter/Flutter-Generated.xcconfig
+**/macos/Flutter/ephemeral/
+
+# Windows related
+windows/flutter/ephemeral/
+windows/flutter/Generated.cmake
+windows/flutter/generated_config.cmake
+windows/runner/Generated.rc
+windows/runner/generated_config.h
+windows/runner/win32_window.gc
+windows/x64/
+
+# Linux related
+linux/flutter/ephemeral/
+linux/flutter/generated_config.h
+linux/flutter/generated_config.cmake
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Logs
+*.log
+*.temp
+analysis_errors.txt
+analysis_output.txt
+analysis_output_2.txt
+analysis_output_3.txt
+analysis_output_4.txt
