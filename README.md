@@ -3,7 +3,7 @@
 A new Flutter project.
 
 ## Web Demo
-Try the app directly in your browser: [Live Demo](https://kavitha814.github.io/todo_app/)
+[![Open Live Demo](https://img.shields.io/badge/Demo-Open_App-blue?style=for-the-badge&logo=google-chrome)](https://kavitha814.github.io/todo_app/)
 
 ## Getting Started
 
