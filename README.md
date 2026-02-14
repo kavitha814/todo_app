@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+## Web Demo
+Try the app directly in your browser: [Live Demo](https://kavitha814.github.io/todo_app/)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

@@ -10,3 +10,6 @@ A smart, dual-mode task management application built with Flutter, featuring sea
 3.  **Security Prompt**: If you see a security warning (standard for apps outside Google Play), tap **Settings** and enable **"Allow from this source"**.
 4.  **Install**: Tap **Install** and wait for the process to complete.
 5.  **Launch**: Open the app and sign in to sync your tasks!
+
+## Web Demo
+Try the app directly in your browser: [Live Demo](https://kavitha814.github.io/todo_app/)
