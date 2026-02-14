@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'onboarding_screen.dart';
 import 'main_screen.dart';
+import '../services/notification_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -37,20 +38,37 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    // Navigate based on auth state after 3 seconds
-    Timer(const Duration(seconds: 3), () {
-      if (FirebaseAuth.instance.currentUser != null) {
-        // User is logged in
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MainScreen()),
-        );
-      } else {
-        // User is not logged in
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const OnboardingScreen()),
-        );
-      }
-    });
+    // Request permissions and then navigate
+    checkPermissionsAndNavigate();
+  }
+
+  Future<void> checkPermissionsAndNavigate() async {
+    // Start minimum delay timer
+    final minDelay = Future.delayed(const Duration(milliseconds: 2500));
+
+    // Request permissions
+    final permissionRequest = NotificationService().requestPermissions();
+
+    // Wait for both to complete
+    await Future.wait([minDelay, permissionRequest]);
+
+    if (mounted) {
+      _navigate();
+    }
+  }
+
+  void _navigate() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      // User is logged in
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+      );
+    } else {
+      // User is not logged in
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+      );
+    }
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../services/notification_service.dart';
 
 class AlarmScreen extends StatefulWidget {
   final String payload; // Expecting "taskId|title|description" or just title
@@ -16,6 +17,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
   late String _amPmString;
   late Timer _timer;
   String _taskTitle = 'Alarm';
+  int? _notificationId;
 
   @override
   void initState() {
@@ -32,6 +34,9 @@ class _AlarmScreenState extends State<AlarmScreen> {
     if (widget.payload.contains('|')) {
       final parts = widget.payload.split('|');
       // parts[0] is ID, parts[1] is Title
+      if (parts.isNotEmpty) {
+        _notificationId = int.tryParse(parts[0]);
+      }
       if (parts.length > 1) {
         _taskTitle = parts
             .sublist(1)
@@ -48,10 +53,12 @@ class _AlarmScreenState extends State<AlarmScreen> {
     final DateTime now = DateTime.now();
     final String formattedTime = DateFormat('h:mm').format(now);
     final String formattedAmPm = DateFormat('a').format(now);
-    setState(() {
-      _timeString = formattedTime;
-      _amPmString = formattedAmPm;
-    });
+    if (mounted) {
+      setState(() {
+        _timeString = formattedTime;
+        _amPmString = formattedAmPm;
+      });
+    }
   }
 
   @override
@@ -61,13 +68,17 @@ class _AlarmScreenState extends State<AlarmScreen> {
   }
 
   void _handleDismiss() {
-    // Logic to stop audio if playing (not implemented yet)
-    // Navigate back or close app window if it was opened solely for this
+    if (_notificationId != null) {
+      NotificationService().cancelAlarm(_notificationId!);
+    }
     Navigator.of(context).pop();
   }
 
   void _handleSnooze() {
-    // Logic to reschedule notification (not implemented yet)
+    if (_notificationId != null) {
+      NotificationService().cancelAlarm(_notificationId!);
+    }
+    // Logic to reschedule notification would go here
     Navigator.of(context).pop();
   }
 

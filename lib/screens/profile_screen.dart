@@ -2,10 +2,28 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../models/todo.dart';
+import '../services/todo_database.dart';
 import 'signin_screen.dart';
+import '../services/notification_service.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  final TodoDatabase? database;
+
+  const ProfileScreen({Key? key, this.database}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late final TodoDatabase _database;
+
+  @override
+  void initState() {
+    super.initState();
+    _database = widget.database ?? TodoDatabase();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,96 +51,124 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: 32),
 
                 // Profile Avatar and Info
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1D1D),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    children: [
-                      Stack(
+                StreamBuilder<List<Todo>>(
+                  stream: _database.watchAllTodos(),
+                  builder: (context, snapshot) {
+                    final todos = snapshot.data ?? [];
+                    final completedCount = todos
+                        .where((t) => t.isCompleted)
+                        .length;
+                    final inProgressCount = todos
+                        .where((t) => !t.isCompleted)
+                        .length;
+                    final categoriesCount = todos
+                        .map((t) => t.category)
+                        .toSet()
+                        .length;
+
+                    final user = FirebaseAuth.instance.currentUser;
+                    final displayName = user?.displayName ?? 'User Data';
+                    final email = user?.email ?? 'user@email.com';
+                    final photoUrl = user?.photoURL;
+
+                    return Container(
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1D1D1D),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
                         children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                colors: [
-                                  const Color(0xFF8875FF).withOpacity(0.8),
-                                  const Color(0xFF8875FF),
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
+                          Stack(
+                            children: [
+                              Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      const Color(0xFF8875FF).withOpacity(0.8),
+                                      const Color(0xFF8875FF),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  image: photoUrl != null
+                                      ? DecorationImage(
+                                          image: NetworkImage(photoUrl),
+                                          fit: BoxFit.cover,
+                                        )
+                                      : null,
+                                ),
+                                child: photoUrl == null
+                                    ? const Icon(
+                                        Icons.person,
+                                        size: 50,
+                                        color: Colors.white,
+                                      )
+                                    : null,
                               ),
-                            ),
-                            child: const Icon(
-                              Icons.person,
-                              size: 50,
+                              /* Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF8875FF),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.edit,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),*/
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            displayName,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: const BoxDecoration(
-                                color: Color(0xFF8875FF),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.edit,
-                                size: 16,
-                                color: Colors.white,
-                              ),
+                          const SizedBox(height: 4),
+                          Text(
+                            email,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.white54,
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        FirebaseAuth.instance.currentUser?.displayName ??
-                            'User Data',
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        FirebaseAuth.instance.currentUser?.email ??
-                            'user@email.com',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white54,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
+                          const SizedBox(height: 20),
 
-                      // Stats Row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _buildStatItem('24', 'Tasks Done'),
-                          Container(
-                            width: 1,
-                            height: 40,
-                            color: Colors.white12,
+                          // Stats Row
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _buildStatItem('$completedCount', 'Tasks Done'),
+                              Container(
+                                width: 1,
+                                height: 40,
+                                color: Colors.white12,
+                              ),
+                              _buildStatItem('$inProgressCount', 'In Progress'),
+                              Container(
+                                width: 1,
+                                height: 40,
+                                color: Colors.white12,
+                              ),
+                              _buildStatItem('$categoriesCount', 'Categories'),
+                            ],
                           ),
-                          _buildStatItem('12', 'In Progress'),
-                          Container(
-                            width: 1,
-                            height: 40,
-                            color: Colors.white12,
-                          ),
-                          _buildStatItem('8', 'Categories'),
                         ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
 
                 const SizedBox(height: 24),
@@ -206,7 +252,62 @@ class ProfileScreen extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                // Version Info
+                // Debug Section
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Debug',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                _buildProfileItem(
+                  icon: Icons.alarm_add,
+                  title: 'Test Alarm (15s)',
+                  subtitle: 'Schedule an alarm for 15s from now',
+                  onTap: () async {
+                    await NotificationService().scheduleTestAlarm();
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Alarm scheduled for 15s! Close the app or lock screen to test.',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+                _buildProfileItem(
+                  icon: Icons.notifications_active,
+                  title: 'Test Notification',
+                  subtitle: 'Show an instant notification',
+                  onTap: () async {
+                    await NotificationService().showInstantNotification();
+                  },
+                ),
+                _buildProfileItem(
+                  icon: Icons.settings_applications,
+                  title: 'Check Permissions',
+                  subtitle: 'Re-request notification permissions',
+                  onTap: () async {
+                    await NotificationService().requestPermissions();
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Permission request sent/checked.'),
+                        ),
+                      );
+                    }
+                  },
+                ),
+
+                const SizedBox(height: 24),
                 const Text(
                   'Version 1.0.0',
                   style: TextStyle(fontSize: 12, color: Colors.white38),

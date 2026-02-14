@@ -79,7 +79,10 @@ class _MainScreenState extends State<MainScreen> {
           ),
           const SizedBox(), // Placeholder for center button
           const FocusScreen(key: PageStorageKey('focus_screen')),
-          const ProfileScreen(key: PageStorageKey('profile_screen')),
+          ProfileScreen(
+            key: const PageStorageKey('profile_screen'),
+            database: _database,
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

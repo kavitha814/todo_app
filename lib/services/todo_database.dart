@@ -1,5 +1,6 @@
 // lib/services/todo_database.dart
 import 'package:isar/isar.dart';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,18 +28,25 @@ class TodoDatabase {
   // Sync - Fetch from Firestore and update Isar
   Future<void> syncFromFirestore() async {
     final uid = currentUserId;
-    if (uid == null) return;
+    if (uid == null) {
+      print('[TodoDatabase] Sync aborted: No user logged in.');
+      return;
+    }
 
     try {
+      print('[TodoDatabase] Starting sync from Firestore for user: $uid');
       final snapshot = await _userTodos.get();
       print(
-        'Firestore sync: Found ${snapshot.docs.length} documents in Firestore',
+        '[TodoDatabase] Firestore sync: Found ${snapshot.docs.length} documents in Firestore',
       );
 
       final List<Todo> syncedTodos = [];
       await isar.writeTxn(() async {
         for (var doc in snapshot.docs) {
           final data = doc.data() as Map<String, dynamic>;
+          debugPrint(
+            '[TodoDatabase] Processing doc: ${doc.id} - ${data['title']}',
+          );
 
           // Handle Timestamp conversion for createdAt
           if (data['createdAt'] is Timestamp) {
@@ -63,17 +71,26 @@ class TodoDatabase {
       });
 
       // Update alarms for synced todos
+      print(
+        '[TodoDatabase] Updating alarms for ${syncedTodos.length} synced todos...',
+      );
       for (var todo in syncedTodos) {
         if (todo.isCompleted) {
+          print(
+            '[TodoDatabase] Canceling alarm (Task Completed): ${todo.title}',
+          );
           await NotificationService().cancelAlarm(todo.id);
         } else {
+          print('[TodoDatabase] Scheduling alarm (Task Active): ${todo.title}');
           await NotificationService().scheduleAlarm(todo);
         }
       }
 
-      print('Firestore sync: Local Isar updated from Firestore');
+      print(
+        '[TodoDatabase] Firestore sync: Local Isar updated from Firestore successfully.',
+      );
     } catch (e) {
-      print('Firestore sync error (down): $e');
+      print('[TodoDatabase] Firestore sync error (down): $e');
     }
 
     // After pulling, push any local tasks that might not be in Firestore
@@ -87,12 +104,14 @@ class TodoDatabase {
 
     try {
       final localTodos = await isar.todos.filter().userIdEqualTo(uid).findAll();
-      print('Firestore push: Found ${localTodos.length} local tasks to push');
+      print(
+        '[TodoDatabase] Firestore push: Found ${localTodos.length} local tasks to check/push',
+      );
       for (var todo in localTodos) {
         await _pushToFirestore(todo);
       }
     } catch (e) {
-      print('Firestore sync error (up): $e');
+      print('[TodoDatabase] Firestore sync error (up): $e');
     }
   }
 
@@ -100,11 +119,16 @@ class TodoDatabase {
   Future<void> _pushToFirestore(Todo todo) async {
     final user = _auth.currentUser;
     if (user == null) {
-      print('Firestore push error: Cannot push because user is null');
+      print(
+        '[TodoDatabase] Firestore push ERROR: Cannot push "${todo.title}" because user is null',
+      );
       return;
     }
 
     try {
+      print(
+        '[TodoDatabase] Pushing task to Firestore: ${todo.title} (ID: ${todo.id})',
+      );
       await _userTodos.doc(todo.id.toString()).set({
         'id': todo.id,
         'title': todo.title,
@@ -118,9 +142,11 @@ class TodoDatabase {
         'scheduledTimeMinutes': todo.scheduledTimeMinutes,
         'createdAt': FieldValue.serverTimestamp(), // Using serverTimestamp
       });
-      print('Firestore push success: Task "${todo.title}" with ID ${todo.id}');
+      print('[TodoDatabase] Firestore push SUCCESS: Task "${todo.title}"');
     } catch (e) {
-      print('Firestore push error for task "${todo.title}": $e');
+      print('[TodoDatabase] Firestore push ERROR for task "${todo.title}": $e');
+      print('DEBUG: UserID: ${_auth.currentUser?.uid}');
+      print('DEBUG: Target Path: ${_userTodos.path}/${todo.id}');
     }
   }
 
@@ -129,6 +155,7 @@ class TodoDatabase {
 
   // Create - Add new todo (BOTH Isar + Firestore together)
   Future<void> addTodo(Todo todo) async {
+    print('[TodoDatabase] Adding new todo: ${todo.title}');
     // 1️⃣ Save locally
     todo.userId = currentUserId;
     await isar.writeTxn(() async {
@@ -139,9 +166,13 @@ class TodoDatabase {
     await _pushToFirestore(todo);
 
     // 3️⃣ Schedule alarm
-    // 3️⃣ Schedule alarm
     if (!todo.isCompleted) {
+      print('[TodoDatabase] Scheduling initial alarm for: ${todo.title}');
       await NotificationService().scheduleAlarm(todo);
+    } else {
+      print(
+        '[TodoDatabase] NOT Scheduling initial alarm (Completed): ${todo.title}',
+      );
     }
   }
 

@@ -5,6 +5,8 @@ import 'firebase_options.dart';
 import 'services/todo_database.dart';
 import 'services/notification_service.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -26,7 +28,19 @@ class UpTodoApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       title: 'UpTodo',
+
       debugShowCheckedModeBanner: false,
+
+      // Localizations needed for Cupertino widgets
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'), // English
+      ],
+
       theme: ThemeData(
         primarySwatch: Colors.purple,
         scaffoldBackgroundColor: const Color(0xFF121212),
