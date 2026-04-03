@@ -9,7 +9,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -63,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: const Icon(
                       Icons.check_circle_outline,
                       size: 70,
-                      color: Colors.white,
+                      color: Colors.black87,
                     ),
                   ),
                 ),
@@ -76,7 +76,7 @@ class WelcomeScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 34,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black87,
                     letterSpacing: -0.5,
                   ),
                   textAlign: TextAlign.center,
@@ -88,7 +88,7 @@ class WelcomeScreen extends StatelessWidget {
                   'Please login to your account or create\nnew account to continue',
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white.withOpacity(0.65),
+                    color: Colors.black87.withOpacity(0.65),
                     height: 1.6,
                   ),
                   textAlign: TextAlign.center,
@@ -114,7 +114,7 @@ class WelcomeScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF8875FF),
-                            foregroundColor: Colors.white,
+                            foregroundColor: Colors.black87,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -146,7 +146,7 @@ class WelcomeScreen extends StatelessWidget {
                               gradient: LinearGradient(
                                 colors: [
                                   Colors.transparent,
-                                  Colors.white.withOpacity(0.2),
+                                  Colors.black87.withOpacity(0.2),
                                 ],
                               ),
                             ),
@@ -157,7 +157,7 @@ class WelcomeScreen extends StatelessWidget {
                           child: Text(
                             'OR',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.5),
+                              color: Colors.black87.withOpacity(0.5),
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1,
@@ -170,7 +170,7 @@ class WelcomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  Colors.white.withOpacity(0.2),
+                                  Colors.black87.withOpacity(0.2),
                                   Colors.transparent,
                                 ],
                               ),
@@ -227,7 +227,7 @@ class WelcomeScreen extends StatelessWidget {
                   'Organize your life • Stay productive',
                   style: TextStyle(
                     fontSize: 12,
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.black87.withOpacity(0.3),
                     letterSpacing: 0.5,
                   ),
                 ),

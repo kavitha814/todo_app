@@ -99,7 +99,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                 Text(
                   _timeString,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black87,
                     fontSize: 80,
                     fontWeight: FontWeight.w400,
                     letterSpacing: -2,
@@ -110,7 +110,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
                 Text(
                   _amPmString,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black87,
                     fontSize: 30,
                     fontWeight: FontWeight.w400,
                     letterSpacing: 2,
@@ -123,7 +123,7 @@ class _AlarmScreenState extends State<AlarmScreen> {
             Text(
               _taskTitle,
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.black87,
                 fontSize: 24,
                 fontWeight: FontWeight.w300,
                 letterSpacing: 0.5,
@@ -155,11 +155,11 @@ class _AlarmScreenState extends State<AlarmScreen> {
                       width: 72,
                       height: 72,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.black87,
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.white24,
+                            color: Colors.black26,
                             blurRadius: 10,
                             spreadRadius: 2,
                           ),

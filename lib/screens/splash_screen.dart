@@ -80,14 +80,14 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              const Color(0xFF121212),
+              const Color(0xFFFFFFFF),
               const Color(0xFF8875FF).withOpacity(0.1),
             ],
           ),
@@ -118,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: const Icon(
                       Icons.check_circle_outline,
                       size: 70,
-                      color: Colors.white,
+                      color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -128,7 +128,7 @@ class _SplashScreenState extends State<SplashScreen>
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black87,
                       letterSpacing: 2,
                     ),
                   ),
@@ -138,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen>
                     'Organize your life',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.white.withOpacity(0.6),
+                      color: Colors.black87.withOpacity(0.6),
                       letterSpacing: 1,
                     ),
                   ),

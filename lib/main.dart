@@ -19,6 +19,7 @@ void main() async {
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final ValueNotifier<int> globalTabNotifier = ValueNotifier<int>(0);
 
 class UpTodoApp extends StatelessWidget {
   const UpTodoApp({super.key});
@@ -43,16 +44,16 @@ class UpTodoApp extends StatelessWidget {
 
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        scaffoldBackgroundColor: const Color(0xFF121212),
-        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+        brightness: Brightness.light,
         fontFamily: 'Lato',
-        colorScheme: const ColorScheme.dark(
+        colorScheme: const ColorScheme.light(
           primary: Color(0xFF8875FF),
           secondary: Color(0xFF8875FF),
-          surface: Color(0xFF1D1D1D),
+          surface: Color(0xFFF5F5F5),
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF121212),
+          backgroundColor: Color(0xFFFFFFFF),
           elevation: 0,
         ),
       ),

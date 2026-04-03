@@ -55,11 +55,16 @@ class NotificationService with WidgetsBindingObserver {
       onDidReceiveNotificationResponse: (details) {
         if (details.payload != null) {
           debugPrint('Notification clicked with payload: ${details.payload}');
-          navigatorKey.currentState?.push(
-            MaterialPageRoute(
-              builder: (_) => AlarmScreen(payload: details.payload!),
-            ),
-          );
+          if (details.payload == 'focus_completed' || details.payload == 'focus_failed') {
+            navigatorKey.currentState?.popUntil((route) => route.isFirst);
+            globalTabNotifier.value = 3; // Switch to Focus tab
+          } else {
+            navigatorKey.currentState?.push(
+              MaterialPageRoute(
+                builder: (_) => AlarmScreen(payload: details.payload!),
+              ),
+            );
+          }
         }
       },
     );
@@ -321,11 +326,12 @@ class NotificationService with WidgetsBindingObserver {
   }
 
   /// -------------------------------
-  /// TEST NOTIFICATION (DEBUG)
+  /// TEST OR INSTANT NOTIFICATION
   /// -------------------------------
   Future<void> showInstantNotification({
     String title = 'Test Notification',
     String body = 'If you see this, notifications are working!',
+    String? payload,
   }) async {
     const AndroidNotificationDetails androidDetails =
         AndroidNotificationDetails(
@@ -342,6 +348,7 @@ class NotificationService with WidgetsBindingObserver {
       title,
       body,
       details,
+      payload: payload,
     );
   }
 
@@ -380,6 +387,9 @@ class NotificationService with WidgetsBindingObserver {
         } else {
           debugPrint('Notification $id is NOT active. Ignoring stale intent.');
         }
+      } else if (payload == 'focus_completed' || payload == 'focus_failed') {
+        navigatorKey.currentState?.popUntil((route) => route.isFirst);
+        globalTabNotifier.value = 3;
       }
     }
   }

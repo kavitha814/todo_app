@@ -46,9 +46,9 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xFF8875FF),
-              onPrimary: Colors.white,
-              surface: Color(0xFF1D1D1D),
-              onSurface: Colors.white,
+              onPrimary: Colors.black87,
+              surface: Color(0xFFF5F5F5),
+              onSurface: Colors.black87,
             ),
           ),
           child: child!,
@@ -65,9 +65,9 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
             data: Theme.of(context).copyWith(
               colorScheme: const ColorScheme.dark(
                 primary: Color(0xFF8875FF),
-                onPrimary: Colors.white,
-                surface: Color(0xFF1D1D1D),
-                onSurface: Colors.white,
+                onPrimary: Colors.black87,
+                surface: Color(0xFFF5F5F5),
+                onSurface: Colors.black87,
               ),
             ),
             child: child!,
@@ -98,9 +98,9 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xFF8875FF),
-              onPrimary: Colors.white,
-              surface: Color(0xFF1D1D1D),
-              onSurface: Colors.white,
+              onPrimary: Colors.black87,
+              surface: Color(0xFFF5F5F5),
+              onSurface: Colors.black87,
             ),
           ),
           child: child!,
@@ -169,7 +169,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       decoration: const BoxDecoration(
-        color: Color(0xFF1D1D1D),
+        color: Color(0xFFF5F5F5),
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: SingleChildScrollView(
@@ -188,11 +188,11 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black87,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white54),
+                    icon: const Icon(Icons.close, color: Colors.black54),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
@@ -206,16 +206,16 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white70,
+                  color: Colors.black87,
                 ),
               ),
               const SizedBox(height: 8),
               TextField(
                 controller: _titleController,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.black87),
                 decoration: InputDecoration(
                   hintText: 'Enter task name',
-                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
+                  hintStyle: TextStyle(color: Colors.black87.withOpacity(0.3)),
                   filled: true,
                   fillColor: const Color(0xFF2C2C2C),
                   border: OutlineInputBorder(
@@ -235,17 +235,17 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white70,
+                  color: Colors.black87,
                 ),
               ),
               const SizedBox(height: 8),
               TextField(
                 controller: _descriptionController,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.black87),
                 maxLines: 3,
                 decoration: InputDecoration(
                   hintText: 'Enter description (optional)',
-                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
+                  hintStyle: TextStyle(color: Colors.black87.withOpacity(0.3)),
                   filled: true,
                   fillColor: const Color(0xFF2C2C2C),
                   border: OutlineInputBorder(
@@ -265,13 +265,13 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white70,
+                  color: Colors.black87,
                 ),
               ),
               const SizedBox(height: 12),
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF363636),
+                  color: const Color(0xFFF5F5F5),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -300,8 +300,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                 Icons.task_alt,
                                 size: 18,
                                 color: !_isRoutine
-                                    ? Colors.white
-                                    : Colors.white54,
+                                    ? Colors.black87
+                                    : Colors.black54,
                               ),
                               const SizedBox(width: 8),
                               Text(
@@ -312,8 +312,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                       ? FontWeight.w600
                                       : FontWeight.normal,
                                   color: !_isRoutine
-                                      ? Colors.white
-                                      : Colors.white54,
+                                      ? Colors.black87
+                                      : Colors.black54,
                                 ),
                               ),
                             ],
@@ -345,8 +345,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                 Icons.schedule,
                                 size: 18,
                                 color: _isRoutine
-                                    ? Colors.white
-                                    : Colors.white54,
+                                    ? Colors.black87
+                                    : Colors.black54,
                               ),
                               const SizedBox(width: 8),
                               Text(
@@ -357,8 +357,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                       ? FontWeight.w600
                                       : FontWeight.normal,
                                   color: _isRoutine
-                                      ? Colors.white
-                                      : Colors.white54,
+                                      ? Colors.black87
+                                      : Colors.black54,
                                 ),
                               ),
                             ],
@@ -385,7 +385,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white70,
+                            color: Colors.black87,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -426,8 +426,8 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                                   ? _selectedTime
                                                   : _selectedDate) ==
                                               null
-                                          ? Colors.white.withOpacity(0.3)
-                                          : Colors.white,
+                                          ? Colors.black87.withOpacity(0.3)
+                                          : Colors.black87,
                                     ),
                                   ),
                                 ),
@@ -451,7 +451,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white70,
+                            color: Colors.black87,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -471,7 +471,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                                 color: Color(0xFF8875FF),
                               ),
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: Colors.black87,
                                 fontSize: 13,
                               ),
                               items: _categories.map((category) {
@@ -502,7 +502,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white70,
+                  color: Colors.black87,
                 ),
               ),
               const SizedBox(height: 12),
@@ -525,7 +525,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   onPressed: _addTask,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF8875FF),
-                    foregroundColor: Colors.white,
+                    foregroundColor: Colors.black87,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -573,7 +573,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: isSelected ? color : Colors.white54,
+                color: isSelected ? color : Colors.black54,
               ),
             ),
           ),

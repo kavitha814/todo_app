@@ -49,9 +49,9 @@ class TodoCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFF1D1D1D),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.05), width: 1),
+        border: Border.all(color: Colors.black87.withOpacity(0.05), width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
@@ -84,7 +84,7 @@ class TodoCard extends StatelessWidget {
                       border: Border.all(
                         color: todo.isCompleted
                             ? const Color(0xFF8875FF)
-                            : Colors.white.withOpacity(0.3),
+                            : Colors.black87.withOpacity(0.3),
                         width: 2.5,
                       ),
                       color: todo.isCompleted
@@ -92,7 +92,7 @@ class TodoCard extends StatelessWidget {
                           : Colors.transparent,
                     ),
                     child: todo.isCompleted
-                        ? const Icon(Icons.check, size: 18, color: Colors.white)
+                        ? const Icon(Icons.check, size: 18, color: Colors.black87)
                         : null,
                   ),
                 ),
@@ -111,12 +111,12 @@ class TodoCard extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: todo.isCompleted
-                              ? Colors.white.withOpacity(0.4)
-                              : Colors.white,
+                              ? Colors.black87.withOpacity(0.4)
+                              : Colors.black87,
                           decoration: todo.isCompleted
                               ? TextDecoration.lineThrough
                               : TextDecoration.none,
-                          decorationColor: Colors.white.withOpacity(0.4),
+                          decorationColor: Colors.black87.withOpacity(0.4),
                           decorationThickness: 2,
                         ),
                       ),
@@ -130,8 +130,8 @@ class TodoCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             color: todo.isCompleted
-                                ? Colors.white.withOpacity(0.25)
-                                : Colors.white.withOpacity(0.6),
+                                ? Colors.black87.withOpacity(0.25)
+                                : Colors.black87.withOpacity(0.6),
                             height: 1.3,
                           ),
                           maxLines: 2,
@@ -156,7 +156,7 @@ class TodoCard extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 color: todo.isCompleted
-                                    ? Colors.white.withOpacity(0.05)
+                                    ? Colors.black87.withOpacity(0.05)
                                     : const Color(0xFF2C2C2C),
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -167,8 +167,8 @@ class TodoCard extends StatelessWidget {
                                     Icons.access_time,
                                     size: 14,
                                     color: todo.isCompleted
-                                        ? Colors.white.withOpacity(0.25)
-                                        : Colors.white.withOpacity(0.5),
+                                        ? Colors.black87.withOpacity(0.25)
+                                        : Colors.black87.withOpacity(0.5),
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
@@ -178,8 +178,8 @@ class TodoCard extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: todo.isCompleted
-                                          ? Colors.white.withOpacity(0.25)
-                                          : Colors.white.withOpacity(0.5),
+                                          ? Colors.black87.withOpacity(0.25)
+                                          : Colors.black87.withOpacity(0.5),
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -195,7 +195,7 @@ class TodoCard extends StatelessWidget {
                             ),
                             decoration: BoxDecoration(
                               color: todo.isCompleted
-                                  ? Colors.white.withOpacity(0.05)
+                                  ? Colors.black87.withOpacity(0.05)
                                   : _getPriorityColor().withOpacity(0.15),
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -206,7 +206,7 @@ class TodoCard extends StatelessWidget {
                                   _getCategoryIcon(),
                                   size: 14,
                                   color: todo.isCompleted
-                                      ? Colors.white.withOpacity(0.25)
+                                      ? Colors.black87.withOpacity(0.25)
                                       : _getPriorityColor(),
                                 ),
                                 const SizedBox(width: 6),
@@ -215,7 +215,7 @@ class TodoCard extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: todo.isCompleted
-                                        ? Colors.white.withOpacity(0.25)
+                                        ? Colors.black87.withOpacity(0.25)
                                         : _getPriorityColor(),
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -231,7 +231,7 @@ class TodoCard extends StatelessWidget {
                               height: 8,
                               decoration: BoxDecoration(
                                 color: todo.isCompleted
-                                    ? Colors.white.withOpacity(0.25)
+                                    ? Colors.black87.withOpacity(0.25)
                                     : _getPriorityColor(),
                                 shape: BoxShape.circle,
                               ),
@@ -249,8 +249,8 @@ class TodoCard extends StatelessWidget {
                   icon: Icon(
                     Icons.delete_outline,
                     color: todo.isCompleted
-                        ? Colors.white.withOpacity(0.25)
-                        : Colors.white.withOpacity(0.4),
+                        ? Colors.black87.withOpacity(0.25)
+                        : Colors.black87.withOpacity(0.4),
                   ),
                   onPressed: () {
                     _showDeleteConfirmation(context);
@@ -270,22 +270,22 @@ class TodoCard extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1D1D1D),
+        backgroundColor: const Color(0xFFF5F5F5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: const Text(
           'Delete Task',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         ),
         content: const Text(
           'Are you sure you want to delete this task?',
-          style: TextStyle(color: Colors.white70),
+          style: TextStyle(color: Colors.black87),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.white54),
+              style: TextStyle(color: Colors.black54),
             ),
           ),
           TextButton(

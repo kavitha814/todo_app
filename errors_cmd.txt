@@ -1,0 +1,22 @@
+Analyzing index_screen.dart, profile_screen.dart...
+
+  error - lib\screens\index_screen.dart:153:55 - Invalid constant value. - invalid_constant
+  error - lib\screens\index_screen.dart:153:62 - The getter 'black8738' isn't defined for the type 'Colors'. Try importing the library that defines 'black8738', correcting the name to the name of an existing getter, or defining a getter or field named 'black8738'. - undefined_getter
+  error - lib\screens\index_screen.dart:344:59 - Invalid constant value. - invalid_constant
+  error - lib\screens\index_screen.dart:344:66 - The getter 'black8738' isn't defined for the type 'Colors'. Try importing the library that defines 'black8738', correcting the name to the name of an existing getter, or defining a getter or field named 'black8738'. - undefined_getter
+  error - lib\screens\profile_screen.dart:157:47 - The getter 'black8712' isn't defined for the type 'Colors'. Try importing the library that defines 'black8712', correcting the name to the name of an existing getter, or defining a getter or field named 'black8712'. - undefined_getter
+  error - lib\screens\profile_screen.dart:163:47 - The getter 'black8712' isn't defined for the type 'Colors'. Try importing the library that defines 'black8712', correcting the name to the name of an existing getter, or defining a getter or field named 'black8712'. - undefined_getter
+  error - lib\screens\profile_screen.dart:313:57 - Invalid constant value. - invalid_constant
+  error - lib\screens\profile_screen.dart:313:64 - The getter 'black8738' isn't defined for the type 'Colors'. Try importing the library that defines 'black8738', correcting the name to the name of an existing getter, or defining a getter or field named 'black8738'. - undefined_getter
+  error - lib\screens\profile_screen.dart:404:62 - The getter 'black8738' isn't defined for the type 'Colors'. Try importing the library that defines 'black8738', correcting the name to the name of an existing getter, or defining a getter or field named 'black8738'. - undefined_getter
+   info - lib\screens\index_screen.dart:16:9 - Parameter 'key' could be a super parameter. Trying converting 'key' to a super parameter. - use_super_parameters
+   info - lib\screens\index_screen.dart:179:30 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib\screens\index_screen.dart:187:11 - Use a 'SizedBox' to add whitespace to a layout. Try using a 'SizedBox' rather than a 'Container'. - sized_box_for_whitespace
+   info - lib\screens\index_screen.dart:203:44 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib\screens\profile_screen.dart:13:9 - Parameter 'key' could be a super parameter. Trying converting 'key' to a super parameter. - use_super_parameters
+   info - lib\screens\profile_screen.dart:91:63 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib\screens\profile_screen.dart:366:38 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib\screens\profile_screen.dart:367:51 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib\screens\profile_screen.dart:395:44 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+
+18 issues found.

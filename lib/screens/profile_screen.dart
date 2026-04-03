@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black87,
                       letterSpacing: -0.5,
                     ),
                   ),
@@ -74,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     return Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1D1D1D),
+                        color: const Color(0xFFF5F5F5),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ? const Icon(
                                         Icons.person,
                                         size: 50,
-                                        color: Colors.white,
+                                        color: Colors.black87,
                                       )
                                     : null,
                               ),
@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: const Icon(
                                     Icons.edit,
                                     size: 16,
-                                    color: Colors.white,
+                                    color: Colors.black87,
                                   ),
                                 ),
                               ),*/
@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black87,
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -141,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             email,
                             style: const TextStyle(
                               fontSize: 14,
-                              color: Colors.white54,
+                              color: Colors.black54,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -154,13 +154,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Container(
                                 width: 1,
                                 height: 40,
-                                color: Colors.white12,
+                                color: Colors.black12,
                               ),
                               _buildStatItem('$inProgressCount', 'In Progress'),
                               Container(
                                 width: 1,
                                 height: 40,
-                                color: Colors.white12,
+                                color: Colors.black12,
                               ),
                               _buildStatItem('$categoriesCount', 'Categories'),
                             ],
@@ -181,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white70,
+                      color: Colors.black87,
                     ),
                   ),
                 ),
@@ -222,7 +222,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white70,
+                      color: Colors.black87,
                     ),
                   ),
                 ),
@@ -260,7 +260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white70,
+                      color: Colors.black87,
                     ),
                   ),
                 ),
@@ -310,7 +310,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 24),
                 const Text(
                   'Version 1.0.0',
-                  style: TextStyle(fontSize: 12, color: Colors.white38),
+                  style: TextStyle(fontSize: 12, color: Colors.black38),
                 ),
               ],
             ),
@@ -334,7 +334,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: Colors.white54),
+          style: const TextStyle(fontSize: 12, color: Colors.black54),
         ),
       ],
     );
@@ -350,7 +350,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Material(
-        color: const Color(0xFF1D1D1D),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           onTap: onTap,
@@ -383,7 +383,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: isDestructive ? Colors.red : Colors.white,
+                          color: isDestructive ? Colors.red : Colors.black87,
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -393,7 +393,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           fontSize: 13,
                           color: isDestructive
                               ? Colors.red.withOpacity(0.6)
-                              : Colors.white54,
+                              : Colors.black54,
                         ),
                       ),
                     ],
@@ -401,7 +401,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Icon(
                   Icons.chevron_right,
-                  color: isDestructive ? Colors.red : Colors.white38,
+                  color: isDestructive ? Colors.red : Colors.black38,
                 ),
               ],
             ),
@@ -415,22 +415,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1D1D1D),
+        backgroundColor: const Color(0xFFF5F5F5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: const Text(
           'Logout',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         ),
         content: const Text(
           'Are you sure you want to logout?',
-          style: TextStyle(color: Colors.white70),
+          style: TextStyle(color: Colors.black87),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.white54),
+              style: TextStyle(color: Colors.black54),
             ),
           ),
           TextButton(

@@ -67,7 +67,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black87,
                       ),
                     ),
                   ),
@@ -87,7 +87,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: const Color(0xFF363636),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(16),
       ),
       child: TableCalendar<Todo>(
@@ -102,8 +102,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         startingDayOfWeek: StartingDayOfWeek.monday,
         calendarStyle: const CalendarStyle(
           outsideDaysVisible: false,
-          defaultTextStyle: TextStyle(color: Colors.white),
-          weekendTextStyle: TextStyle(color: Colors.white70),
+          defaultTextStyle: TextStyle(color: Colors.black87),
+          weekendTextStyle: TextStyle(color: Colors.black87),
           selectedDecoration: BoxDecoration(
             color: Color(0xFF8875FF),
             shape: BoxShape.circle,
@@ -115,7 +115,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             shape: BoxShape.circle,
           ),
           todayTextStyle: TextStyle(
-            color: Colors.white,
+            color: Colors.black87,
             fontWeight: FontWeight.bold,
           ),
           markerDecoration: BoxDecoration(
@@ -127,16 +127,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
           formatButtonVisible: false,
           titleCentered: true,
           titleTextStyle: TextStyle(
-            color: Colors.white,
+            color: Colors.black87,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
-          leftChevronIcon: Icon(Icons.chevron_left, color: Colors.white),
-          rightChevronIcon: Icon(Icons.chevron_right, color: Colors.white),
+          leftChevronIcon: Icon(Icons.chevron_left, color: Colors.black87),
+          rightChevronIcon: Icon(Icons.chevron_right, color: Colors.black87),
         ),
         daysOfWeekStyle: const DaysOfWeekStyle(
-          weekendStyle: TextStyle(color: Colors.white54),
-          weekdayStyle: TextStyle(color: Colors.white54),
+          weekendStyle: TextStyle(color: Colors.black54),
+          weekdayStyle: TextStyle(color: Colors.black54),
         ),
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(_selectedDay, selectedDay)) {
@@ -166,11 +166,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.event_available, size: 80, color: Colors.white24),
+            const Icon(Icons.event_available, size: 80, color: Colors.black26),
             const SizedBox(height: 16),
             const Text(
               'No tasks for this day',
-              style: TextStyle(color: Colors.white54, fontSize: 16),
+              style: TextStyle(color: Colors.black54, fontSize: 16),
             ),
           ],
         ),

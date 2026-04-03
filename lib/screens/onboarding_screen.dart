@@ -43,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: const Text(
                   'SKIP',
                   style: TextStyle(
-                    color: Colors.white54,
+                    color: Colors.black54,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -106,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: const Text(
                         'BACK',
                         style: TextStyle(
-                          color: Colors.white54,
+                          color: Colors.black54,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -126,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF8875FF),
-                      foregroundColor: Colors.white,
+                      foregroundColor: Colors.black87,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                         vertical: 16,
@@ -189,7 +189,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black87,
                     height: 1.2,
                   ),
                   textAlign: TextAlign.center,
@@ -202,7 +202,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   data.description,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white.withOpacity(0.6),
+                    color: Colors.black87.withOpacity(0.6),
                     height: 1.5,
                   ),
                   textAlign: TextAlign.center,
@@ -222,7 +222,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 8,
       width: isActive ? 24 : 8,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xFF8875FF) : Colors.white24,
+        color: isActive ? const Color(0xFF8875FF) : Colors.black26,
         borderRadius: BorderRadius.circular(4),
       ),
     );

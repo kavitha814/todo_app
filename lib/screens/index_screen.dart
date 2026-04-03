@@ -45,7 +45,7 @@ class _IndexScreenState extends State<IndexScreen> {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -68,7 +68,7 @@ class _IndexScreenState extends State<IndexScreen> {
   Widget _buildModeToggle() {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF363636),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -106,7 +106,7 @@ class _IndexScreenState extends State<IndexScreen> {
             Icon(
               icon,
               size: 18,
-              color: isSelected ? Colors.white : Colors.white54,
+              color: isSelected ? Colors.black87 : Colors.black54,
             ),
             const SizedBox(width: 8),
             Text(
@@ -114,7 +114,7 @@ class _IndexScreenState extends State<IndexScreen> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                color: isSelected ? Colors.white : Colors.white54,
+                color: isSelected ? Colors.black87 : Colors.black54,
               ),
             ),
           ],
@@ -141,16 +141,16 @@ class _IndexScreenState extends State<IndexScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.schedule, size: 120, color: Colors.white24),
+              const Icon(Icons.schedule, size: 120, color: Colors.black26),
               const SizedBox(height: 16),
               const Text(
                 'No Daily Routine Set',
-                style: TextStyle(fontSize: 18, color: Colors.white70),
+                style: TextStyle(fontSize: 18, color: Colors.black87),
               ),
               const SizedBox(height: 8),
               const Text(
                 'Create routine tasks for your day',
-                style: TextStyle(fontSize: 14, color: Colors.white38),
+                style: TextStyle(fontSize: 14, color: Colors.black38),
               ),
             ],
           ),
@@ -172,7 +172,7 @@ class _IndexScreenState extends State<IndexScreen> {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF363636),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: todo.isCompleted
@@ -213,7 +213,7 @@ class _IndexScreenState extends State<IndexScreen> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white,
+                    color: Colors.black87,
                     decoration: todo.isCompleted
                         ? TextDecoration.lineThrough
                         : null,
@@ -226,7 +226,7 @@ class _IndexScreenState extends State<IndexScreen> {
                     todo.description!,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.white54,
+                      color: Colors.black54,
                       decoration: todo.isCompleted
                           ? TextDecoration.lineThrough
                           : null,
@@ -248,13 +248,13 @@ class _IndexScreenState extends State<IndexScreen> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: todo.isCompleted ? Colors.green : Colors.white54,
+                  color: todo.isCompleted ? Colors.green : Colors.black54,
                   width: 2,
                 ),
                 color: todo.isCompleted ? Colors.green : Colors.transparent,
               ),
               child: todo.isCompleted
-                  ? const Icon(Icons.check, size: 16, color: Colors.white)
+                  ? const Icon(Icons.check, size: 16, color: Colors.black87)
                   : null,
             ),
           ),
@@ -263,7 +263,7 @@ class _IndexScreenState extends State<IndexScreen> {
           IconButton(
             icon: const Icon(
               Icons.delete_outline,
-              color: Colors.white54,
+              color: Colors.black54,
               size: 20,
             ),
             onPressed: () => _showDeleteConfirmation(context, todo),
@@ -279,22 +279,22 @@ class _IndexScreenState extends State<IndexScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1D1D1D),
+        backgroundColor: const Color(0xFFF5F5F5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: const Text(
           'Delete Routine',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         ),
         content: const Text(
           'Are you sure you want to delete this routine?',
-          style: TextStyle(color: Colors.white70),
+          style: TextStyle(color: Colors.black87),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.white54),
+              style: TextStyle(color: Colors.black54),
             ),
           ),
           TextButton(
@@ -330,18 +330,18 @@ class _IndexScreenState extends State<IndexScreen> {
                     errorBuilder: (context, error, stackTrace) => const Icon(
                       Icons.check_circle_outline,
                       size: 120,
-                      color: Colors.white24,
+                      color: Colors.black26,
                     ),
                   ),
                   const SizedBox(height: 16),
                   const Text(
                     'What do you want to do today?',
-                    style: TextStyle(fontSize: 18, color: Colors.white70),
+                    style: TextStyle(fontSize: 18, color: Colors.black87),
                   ),
                   const SizedBox(height: 8),
                   const Text(
                     'Tap + to add your tasks',
-                    style: TextStyle(fontSize: 14, color: Colors.white38),
+                    style: TextStyle(fontSize: 14, color: Colors.black38),
                   ),
                 ],
               ),
@@ -355,7 +355,7 @@ class _IndexScreenState extends State<IndexScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white70,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -375,7 +375,7 @@ class _IndexScreenState extends State<IndexScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white70,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 12),

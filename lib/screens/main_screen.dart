@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import '../services/todo_database.dart';
+import '../main.dart';
 import 'index_screen.dart';
 import 'focus_screen.dart';
 import 'calendar_screen.dart';
@@ -25,6 +26,17 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _database.syncFromFirestore();
     _database.rescheduleAllAlarms();
+    globalTabNotifier.addListener(() {
+      setState(() {
+        _selectedIndex = globalTabNotifier.value;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Avoid leaking listener, though usually MainScreen exists entire app life
+    super.dispose();
   }
 
   void _onItemTapped(int index) {
@@ -94,7 +106,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 8,
-        color: const Color(0xFF363636),
+        color: const Color(0xFFF5F5F5),
         child: SizedBox(
           height: 60,
           child: Row(
@@ -121,14 +133,14 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Icon(
             icon,
-            color: isSelected ? const Color(0xFF8875FF) : Colors.white54,
+            color: isSelected ? const Color(0xFF8875FF) : Colors.black54,
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
               fontSize: 12,
-              color: isSelected ? const Color(0xFF8875FF) : Colors.white54,
+              color: isSelected ? const Color(0xFF8875FF) : Colors.black54,
             ),
           ),
         ],

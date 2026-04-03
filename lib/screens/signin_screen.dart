@@ -142,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -191,7 +191,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: const Icon(
                           Icons.check_circle_outline,
                           size: 50,
-                          color: Colors.white,
+                          color: Colors.black87,
                         ),
                       ),
                     ),
@@ -204,7 +204,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black87,
                         letterSpacing: -0.5,
                       ),
                     ),
@@ -224,7 +224,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.black87.withOpacity(0.7),
                               ),
                             ),
                           ),
@@ -232,21 +232,21 @@ class _SignInScreenState extends State<SignInScreen> {
                           TextFormField(
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black87),
                             decoration: InputDecoration(
                               hintText: 'Enter your email',
                               hintStyle: TextStyle(
-                                color: Colors.white.withOpacity(0.3),
+                                color: Colors.black87.withOpacity(0.3),
                               ),
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.05),
+                              fillColor: Colors.black87.withOpacity(0.05),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide: BorderSide.none,
                               ),
                               prefixIcon: Icon(
                                 Icons.email_outlined,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.black87.withOpacity(0.5),
                               ),
                               contentPadding: const EdgeInsets.all(16),
                             ),
@@ -279,7 +279,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.black87.withOpacity(0.7),
                               ),
                             ),
                           ),
@@ -287,28 +287,28 @@ class _SignInScreenState extends State<SignInScreen> {
                           TextFormField(
                             controller: _passwordController,
                             obscureText: _obscurePassword,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black87),
                             decoration: InputDecoration(
                               hintText: 'Enter your password',
                               hintStyle: TextStyle(
-                                color: Colors.white.withOpacity(0.3),
+                                color: Colors.black87.withOpacity(0.3),
                               ),
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.05),
+                              fillColor: Colors.black87.withOpacity(0.05),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide: BorderSide.none,
                               ),
                               prefixIcon: Icon(
                                 Icons.lock_outline,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.black87.withOpacity(0.5),
                               ),
                               suffixIcon: IconButton(
                                 icon: Icon(
                                   _obscurePassword
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: Colors.white.withOpacity(0.5),
+                                  color: Colors.black87.withOpacity(0.5),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -353,9 +353,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                     });
                                   },
                                   activeColor: const Color(0xFF8875FF),
-                                  checkColor: Colors.white,
+                                  checkColor: Colors.black87,
                                   side: BorderSide(
-                                    color: Colors.white.withOpacity(0.3),
+                                    color: Colors.black87.withOpacity(0.3),
                                   ),
                                 ),
                               ),
@@ -363,7 +363,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               Text(
                                 'Remember me',
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
+                                  color: Colors.black87.withOpacity(0.7),
                                   fontSize: 13,
                                 ),
                               ),
@@ -398,7 +398,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         onPressed: _isLoading ? null : _handleSignIn,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF8875FF),
-                          foregroundColor: Colors.white,
+                          foregroundColor: Colors.black87,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
@@ -411,7 +411,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 width: 20,
                                 height: 20,
                                 child: CircularProgressIndicator(
-                                  color: Colors.white,
+                                  color: Colors.black87,
                                   strokeWidth: 2,
                                 ),
                               )
@@ -440,7 +440,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 gradient: LinearGradient(
                                   colors: [
                                     Colors.transparent,
-                                    Colors.white.withOpacity(0.2),
+                                    Colors.black87.withOpacity(0.2),
                                   ],
                                 ),
                               ),
@@ -451,7 +451,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Text(
                               'or continue with',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.4),
+                                color: Colors.black87.withOpacity(0.4),
                                 fontSize: 11,
                               ),
                             ),
@@ -462,7 +462,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.white.withOpacity(0.2),
+                                    Colors.black87.withOpacity(0.2),
                                     Colors.transparent,
                                   ],
                                 ),
@@ -497,7 +497,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Text(
                           "Don't have an account? ",
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.6),
+                            color: Colors.black87.withOpacity(0.6),
                             fontSize: 14,
                           ),
                         ),
@@ -541,13 +541,13 @@ class _SignInScreenState extends State<SignInScreen> {
       width: 55,
       height: 55,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.black87.withOpacity(0.05),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
+        border: Border.all(color: Colors.black87.withOpacity(0.1), width: 1),
       ),
       child: IconButton(
         onPressed: onPressed,
-        icon: Icon(icon, size: 30, color: Colors.white.withOpacity(0.8)),
+        icon: Icon(icon, size: 30, color: Colors.black87.withOpacity(0.8)),
       ),
     );
   }
